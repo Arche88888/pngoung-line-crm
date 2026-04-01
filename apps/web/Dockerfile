@@ -7,7 +7,7 @@ COPY packages/shared/package.json packages/shared/
 COPY apps/web/package.json apps/web/
 
 # Install all dependencies
-RUN npm install --ignore-scripts
+RUN npm install
 
 # Copy source code
 COPY packages/shared/ packages/shared/
