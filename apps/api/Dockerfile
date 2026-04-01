@@ -6,8 +6,8 @@ COPY package.json ./
 COPY packages/shared/package.json packages/shared/
 COPY apps/api/package.json apps/api/
 
-# Install all dependencies
-RUN npm install --ignore-scripts
+# Install all dependencies (no --ignore-scripts so tsc binary is linked)
+RUN npm install
 
 # Copy source code
 COPY packages/shared/ packages/shared/
@@ -21,7 +21,7 @@ RUN npm run build --workspace @pngoung/api
 # Create data directory
 RUN mkdir -p data
 
-# Expose port (Railway overrides with PORT env)
+# Expose port (Railway sets PORT env)
 EXPOSE 3001
 
 # Start
